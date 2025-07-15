@@ -1,24 +1,54 @@
-//
-//  ContentView.swift
-//  FitGPT
-//
-//  Created by Brian Smith on 7/13/25.
-//
-
 import SwiftUI
-
-enum Emoji: String {
-    case standingMan = "🧍‍♂️"
-}
+import PhotosUI
 
 struct ContentView: View {
-    var selection: Emoji = .standingMan
+    @State private var selectedItem:
+        PhotosPickerItem?
+    
+    @State private var selectedImage:
+        UIImage?
     
     var body: some View {
         VStack {
-            Text(selection.rawValue)
-                .font(.system(size:120))
-            Text("Hello, world!")
+         
+            if let selectedImage = selectedImage {
+                Image(uiImage: selectedImage)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 300)
+                    .cornerRadius(25)
+            }else {
+                Text("NO IMAGE SELECTED")
+                    .foregroundStyle(.indigo)
+                    .font(.headline)
+                    .padding()
+            }
+            
+            PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared() //bind to selected item
+            ){
+                Text("SELECT PHOTO")
+                    .font(.headline)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.black)
+                    .foregroundStyle(.white)
+                    .cornerRadius(25)
+            }
+            .onChange(of: selectedItem){
+                newItem in
+                    //handle selected item
+                if let newItem = newItem {
+                    Task {
+                        if let data =
+                            try? await
+                            newItem.loadTransferable(type: Data.self),
+                           let image = UIImage (data: data) {
+                            selectedImage = image //update the selected image
+                        }
+                    }
+                }
+            }
+                    
         }
         .padding()
     }
@@ -27,3 +57,5 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
+
