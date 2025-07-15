@@ -7,12 +7,17 @@
 
 import SwiftUI
 
+enum Emoji: String {
+    case standingMan = "🧍‍♂️"
+}
+
 struct ContentView: View {
+    var selection: Emoji = .standingMan
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
+            Text(selection.rawValue)
+                .font(.system(size:120))
             Text("Hello, world!")
         }
         .padding()

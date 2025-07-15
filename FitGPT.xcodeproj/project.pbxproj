@@ -29,7 +29,33 @@
 		D3C3277A2E2421200033490F /* FitGPTUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitGPTUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D3B1F1CC2E243A9600365A05 /* Exceptions for "Preview Content" folder in "FitGPT" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Assets.xcassets,
+			);
+			target = D3C327622E24211D0033490F /* FitGPT */;
+		};
+		D3B1F1CD2E243A9600365A05 /* Exceptions for "Preview Content" folder in "FitGPTUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Assets.xcassets,
+			);
+			target = D3C327792E2421200033490F /* FitGPTUITests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		D3B1F1CB2E243A8700365A05 /* Preview Content */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				D3B1F1CC2E243A9600365A05 /* Exceptions for "Preview Content" folder in "FitGPT" target */,
+				D3B1F1CD2E243A9600365A05 /* Exceptions for "Preview Content" folder in "FitGPTUITests" target */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		D3C327652E24211D0033490F /* FitGPT */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = FitGPT;
@@ -75,6 +101,7 @@
 		D3C3275A2E24211D0033490F = {
 			isa = PBXGroup;
 			children = (
+				D3B1F1CB2E243A8700365A05 /* Preview Content */,
 				D3C327652E24211D0033490F /* FitGPT */,
 				D3C327732E2421200033490F /* FitGPTTests */,
 				D3C3277D2E2421200033490F /* FitGPTUITests */,
@@ -154,6 +181,7 @@
 				D3C3277C2E2421200033490F /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
+				D3B1F1CB2E243A8700365A05 /* Preview Content */,
 				D3C3277D2E2421200033490F /* FitGPTUITests */,
 			);
 			name = FitGPTUITests;
