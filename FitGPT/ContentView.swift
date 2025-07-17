@@ -4,10 +4,8 @@ import PhotosUI
 struct ContentView: View {
     @State private var selectedItem:
         PhotosPickerItem?
-    
     @State private var selectedImage:
         UIImage?
-    
     @State private var showingCamera = false //control camera sheet visiblity
     
     var body: some View {
@@ -24,20 +22,6 @@ struct ContentView: View {
                     .foregroundStyle(.indigo)
                     .font(.headline)
                     .padding()
-            }
-            
-            Button(action: { showingCamera = true
-            }){
-                Text("TAKE PHOTO")
-                    font(.headline)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue)
-                    .foregroundStyle(.white)
-                    .cornerRadius(25)
-            }
-            .sheet(isPresented: $showingCamera){
-                CameraView(image: $selectedImage)
             }
             
             PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared() //bind to selected item
@@ -64,6 +48,18 @@ struct ContentView: View {
                     }
                 }
             }
+            Button {
+                            showingCamera = true
+                        } label: {
+                            Label("Take Photo", systemImage: "camera.fill")
+                                .font(.headline)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(Color.blue)
+                                .foregroundStyle(.white)
+                                .cornerRadius(25)
+                        }
+                        .padding(.top, 10)
                     
         }
         .padding()
